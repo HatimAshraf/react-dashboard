@@ -14,10 +14,8 @@ export async function POST(request:NextRequest){
       return NextResponse.json({error:"User already exists"},{status:400})
     }
     
-    const user = await User.create({email,password})
-    if(user){
-      return NextResponse.json({message:"User Registered Successfull"},{status:200})
-    }
+    await User.create({email,password})
+    return NextResponse.json({message:"User Registered Successfull"},{status:200})     
   }
   
   catch(error){
